@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'base_url' => env('BKASH_BASE_URL', 'https://127.0.0.1:8000.sandbox.bka.sh'),
+    'base_url' => env('BKASH_BASE_URL', 'https://127.0.0.1.sandbox.bka.sh'),
     'sandbox' => env('BKASH_SANDBOX'),
     'app_key' => env('BKASH_APP_KEY'),
     'app_secret' => env('BKASH_APP_SECRET'),
