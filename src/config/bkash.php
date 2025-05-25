@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'base_url' => env('BKASH_BASE_URL', 'https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized'),
     'sandbox' => env('BKASH_SANDBOX'),
     'app_key' => env('BKASH_APP_KEY'),
     'app_secret' => env('BKASH_APP_SECRET'),

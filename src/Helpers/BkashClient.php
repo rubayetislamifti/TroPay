@@ -23,7 +23,7 @@ class BkashClient
         }
 
         $response = Http::withBasicAuth($this->config['app_key'], $this->config['app_secret'])
-            ->post('https://api.bkash.com/v1.2.0/token', [
+            ->post($this->config['base_url'].'checkout/token/grant', [
                 'app_key' => $this->config['app_key'],
                 'app_secret' => $this->config['app_secret'],
             ]);
@@ -56,7 +56,7 @@ class BkashClient
             'Authorization' => $token,
             'X-APP-Key' => $this->config['app_key'],
             'Content-Type' => 'application/json',
-        ])->post($this->config['base_url'] . '/checkout/payment/create', $payload);
+        ])->post($this->config['base_url'] . '/checkout/create', $payload);
 
         if ($response->successful()) {
             return $response->json();
@@ -72,7 +72,7 @@ class BkashClient
             'Authorization' => $token,
             'X-APP-Key' => $this->config['app_key'],
             'Content-Type' => 'application/json',
-        ])->post($this->config['base_url'] . '/checkout/payment/execute', [
+        ])->post($this->config['base_url'] . '/checkout/execute', [
             'paymentID' => $paymentId,
         ]);
 
@@ -89,6 +89,6 @@ class BkashClient
         return Http::withHeaders([
             'Authorization' => $this->token,
             'X-APP-Key' => $this->config['app_key'],
-        ])->get($this->config['base_url'] . '/checkout/payment/status/' . $paymentID)->json();
+        ])->get($this->config['base_url'] . '/checkout/agreement/status' . $paymentID)->json();
     }
 }
