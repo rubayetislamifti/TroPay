@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TrodevIT\\Tropay\\": "src/"
+            "TrodevIT\\TroPay\\": "src/"
         }
     },
     "authors": [

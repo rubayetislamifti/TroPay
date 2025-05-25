@@ -4,7 +4,7 @@ namespace TrodevIT\TroPay;
 
 use Illuminate\Support\ServiceProvider;
 
-class BKashServiceProvider extends ServiceProvider
+class TroPayServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
