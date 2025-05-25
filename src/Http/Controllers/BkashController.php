@@ -4,13 +4,22 @@ namespace TrodevIT\TroPay\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Config;
 use TrodevIT\TroPay\Helpers\BkashClient;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
 
 class BkashController extends Controller
 {
     protected $bkashClient;
 
+    public function pay()
+    {
+        $bkashClient = Config::class->get('bkash');
+        $payment = $bkashClient->createPayment(100, 'INV12345');
+
+        return Redirect::away($payment['bkashURL']);
+    }
     public function __construct(BkashClient $bkashClient)
     {
         $this->bkashClient = $bkashClient;
