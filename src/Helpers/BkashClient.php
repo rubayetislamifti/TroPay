@@ -3,7 +3,7 @@
 namespace TrodevIT\TroPay\Helpers;
 
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Contracts\Config\Repository as Config;
 
 class BkashClient
 {
