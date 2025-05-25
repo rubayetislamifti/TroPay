@@ -23,7 +23,8 @@ class BkashClient
         }
 
         $response = Http::withBasicAuth($this->config['app_key'], $this->config['app_secret'])
-            ->post($this->config['base_url'].'/checkout/token/grant', [
+            ->post($this->config['base_url'].'/checkout/token/grant',
+                [
                 'app_key' => $this->config['app_key'],
                 'app_secret' => $this->config['app_secret'],
             ]);
