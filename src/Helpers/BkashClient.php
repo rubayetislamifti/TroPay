@@ -25,6 +25,8 @@ class BkashClient
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
+            $this->config['username'], // bKash provided username
+            $this->config['password']
         ])->post($this->config['base_url'].'/checkout/token/grant',
                 [
                 'app_key' => $this->config['app_key'],
