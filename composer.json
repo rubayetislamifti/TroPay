@@ -22,10 +22,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TrodevIT\\Tropay\\TropayServiceProvider"
+                "TrodevIT\\TroPay\\TroPayServiceProvider"
             ],
             "aliases": {
-                "Tropay": "TrodevIT\\Tropay\\Facades\\Tropay"
+                "TroPay": "TrodevIT\\TroPay\\Facades\\TroPay"
             }
         }
     },
