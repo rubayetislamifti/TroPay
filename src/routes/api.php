@@ -1,16 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use TrodevIT\TroPay\Http\Controllers\BkashController;
 
-Route::get('/tropay/bkash/pay', [\TrodevIT\TroPay\Http\Controllers\BkashController::class, 'pay'])->name('tropay.bkash.pay');
-
-Route::prefix('bkash')->group(function () {
-    Route::post('/create-payment', [\TrodevIT\TroPay\Http\Controllers\BkashController::class, 'createPayment'])
-        ->name('bkash.createPayment');
-
-    Route::post('/execute-payment', [\TrodevIT\TroPay\Http\Controllers\BkashController::class, 'executePayment'])
-        ->name('bkash.executePayment');
-
-    Route::post('/query-payment', [\TrodevIT\TroPay\Http\Controllers\BkashController::class, 'queryPayment'])
-        ->name('bkash.queryPayment');
+Route::prefix('tropay')->group(function () {
+    Route::get('/pay', [BkashController::class, 'pay'])->name('tropay.pay');
+    Route::post('/create-payment', [BkashController::class, 'createPayment'])->name('tropay.createPayment');
+    Route::post('/execute-payment', [BkashController::class, 'executePayment'])->name('tropay.executePayment');
+    Route::post('/query-payment', [BkashController::class, 'queryPayment'])->name('tropay.queryPayment');
 });
+

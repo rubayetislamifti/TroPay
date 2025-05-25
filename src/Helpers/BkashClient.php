@@ -44,7 +44,7 @@ class BkashClient
     public function createPayment($amount, $invoice = null, $intent = 'sale')
     {
         $token = $this->getToken();
-        dd($token);
+//        dd($token);
         $payload = [
             'amount' => $amount,
             'intent' => $intent,

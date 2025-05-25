@@ -4,7 +4,6 @@ namespace TrodevIT\TroPay\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Config;
 use TrodevIT\TroPay\Helpers\BkashClient;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
@@ -13,18 +12,24 @@ class BkashController extends Controller
 {
     protected $bkashClient;
 
-    public function pay()
-    {
-        $bkashClient = Config::class->get('bkash');
-        $payment = $bkashClient->createPayment(100, 'INV12345');
-
-        return Redirect::away($payment['bkashURL']);
-    }
+    // ✅ Constructor injection works fine
     public function __construct(BkashClient $bkashClient)
     {
         $this->bkashClient = $bkashClient;
     }
 
+    // ✅ Pay and redirect to bKash URL
+    public function pay()
+    {
+        try {
+            $payment = $this->bkashClient->createPayment(100, 'INV12345');
+            return Redirect::away($payment['bkashURL']);
+        } catch (\Exception $e) {
+            return Response::json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    // ✅ API to create payment with params
     public function createPayment(Request $request)
     {
         $amount = $request->input('amount');
@@ -39,6 +44,7 @@ class BkashController extends Controller
         }
     }
 
+    // ✅ API to execute payment
     public function executePayment(Request $request)
     {
         $paymentId = $request->input('paymentId');
@@ -51,6 +57,7 @@ class BkashController extends Controller
         }
     }
 
+    // ✅ API to query payment status
     public function queryPayment(Request $request)
     {
         $paymentId = $request->input('paymentId');
@@ -63,4 +70,3 @@ class BkashController extends Controller
         }
     }
 }
-

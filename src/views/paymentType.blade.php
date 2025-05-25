@@ -22,6 +22,5 @@
 <h1>Select Your Payment Method</h1>
 
 <a href="{{ route('tropay.bkash.pay') }}" class="button bkash">Pay with bKash</a>
-{{--<a href="{{ route('tropay.nagad.pay') }}" class="button nagad">Pay with Nagad</a>--}}
 </body>
 </html>
