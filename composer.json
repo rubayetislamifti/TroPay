@@ -1,0 +1,10 @@
+{
+    "name": "trodevit/tropay",
+    "description": "Payment gateway service from Trodev IT. This package is on testing phase",
+    "type": "library",
+    "require": {
+        "illuminate/support": "12.x-dev"
+    },
+    "license": "MIT",
+    "minimum-stability": "dev"
+}
