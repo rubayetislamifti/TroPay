@@ -28,11 +28,10 @@ class BkashClient
         )->withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-        ])->post(rtrim($this->config['base_url'], '/'.'/checkout/token/grant',
-                [
-                'app_key' => $this->config['app_key'],
-                'app_secret' => $this->config['app_secret'],
-            ]);
+        ])->post(rtrim($this->config['base_url'], '/') . '/checkout/token/grant', [
+            'app_key'    => $this->config['app_key'],
+            'app_secret' => $this->config['app_secret'],
+        ]);
 
         if ($response->successful()) {
             $data = $response->json();
