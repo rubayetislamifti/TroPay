@@ -28,7 +28,7 @@ class BkashClient
         )->withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-        ])->post($this->config['base_url'].'/checkout/token/grant',
+        ])->post(rtrim($this->config['base_url'], '/'.'/checkout/token/grant',
                 [
                 'app_key' => $this->config['app_key'],
                 'app_secret' => $this->config['app_secret'],
