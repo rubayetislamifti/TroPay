@@ -56,7 +56,7 @@ class BkashClient
             'Authorization' => $token,
             'X-APP-Key' => $this->config['app_key'],
             'Content-Type' => 'application/json',
-        ])->post($this->config['base_url'] . '/checkout/create', $payload);
+        ])->post($this->config['base_url'] . '/tokenized/checkout/create', $payload);
 
         if ($response->successful()) {
             return $response->json();
@@ -72,7 +72,7 @@ class BkashClient
             'Authorization' => $token,
             'X-APP-Key' => $this->config['app_key'],
             'Content-Type' => 'application/json',
-        ])->post($this->config['base_url'] . '/checkout/execute', [
+        ])->post($this->config['base_url'] . '/tokenized/checkout/execute', [
             'paymentID' => $paymentId,
         ]);
 
@@ -89,6 +89,6 @@ class BkashClient
         return Http::withHeaders([
             'Authorization' => $this->token,
             'X-APP-Key' => $this->config['app_key'],
-        ])->get($this->config['base_url'] . '/checkout/agreement/status' . $paymentID)->json();
+        ])->get($this->config['base_url'] . '/tokenized/checkout/agreement/status' . $paymentID)->json();
     }
 }
