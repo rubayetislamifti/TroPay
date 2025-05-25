@@ -3,7 +3,31 @@
     "description": "Payment gateway service from Trodev IT. This package is on testing phase",
     "type": "library",
     "require": {
-        "illuminate/support": "12.x-dev"
+        "illuminate/support": "12.x-dev",
+        "illuminate/http": "12.x-dev",
+        "illuminate/routing": "12.x-dev",
+        "illuminate/container": "12.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "TrodevIT\\Tropay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Trodev IT",
+            "email": "rubayetislam16@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TrodevIT\\Tropay\\TropayServiceProvider"
+            ],
+            "aliases": {
+                "Tropay": "TrodevIT\\Tropay\\Facades\\Tropay"
+            }
+        }
     },
     "license": "MIT",
     "minimum-stability": "dev"
