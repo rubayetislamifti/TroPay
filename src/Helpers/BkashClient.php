@@ -22,12 +22,11 @@ class BkashClient
             return $this->token;
         }
 
-        $response = Http::withBasicAuth(
-            $this->config['username'],
-            $this->config['password']
-        )->withHeaders([
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
+        $response = Http::withHeaders([
+            'Content-Type'  => 'application/json',
+            'Accept'        => 'application/json',
+            'username'      => $this->config['username'],
+            'password'      => $this->config['password'],
         ])->post(rtrim($this->config['base_url'], '/') . '/checkout/token/grant', [
             'app_key'    => $this->config['app_key'],
             'app_secret' => $this->config['app_secret'],
