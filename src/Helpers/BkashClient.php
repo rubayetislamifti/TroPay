@@ -13,11 +13,11 @@ class BkashClient
     public function __construct(Config $config)
     {
         $this->config = $config->get('bkash');
-        $this->token = null;
     }
 
     public function getToken()
     {
+        dd($this->token);
         if ($this->token) {
             return $this->token;
         }
