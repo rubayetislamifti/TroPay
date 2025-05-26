@@ -21,6 +21,7 @@ class BkashController extends Controller
 
     public static function index()
     {
+        dd('show payment type');
         return View::make('tropay::paymentType');
     }
     // ✅ Pay and redirect to bKash URL
