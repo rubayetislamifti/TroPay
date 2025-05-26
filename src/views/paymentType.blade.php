@@ -21,6 +21,6 @@
 <body>
 <h1>Select Your Payment Method</h1>
 
-<a href="{{ Route::redirect('tropay.bkash.pay') }}" class="button bkash">Pay with bKash</a>
+{{--<a href="{{ Route::redirect('tropay.bkash.pay') }}" class="button bkash">Pay with bKash</a>--}}
 </body>
 </html>
