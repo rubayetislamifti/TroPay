@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use TrodevIT\TroPay\Helpers\BkashClient;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class BkashController extends Controller
 {
@@ -18,6 +19,10 @@ class BkashController extends Controller
         $this->bkashClient = $bkashClient;
     }
 
+    public function index()
+    {
+        return View::make('paymentType');
+    }
     // ✅ Pay and redirect to bKash URL
     public function pay()
     {
