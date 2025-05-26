@@ -19,7 +19,7 @@ class BkashController extends Controller
         $this->bkashClient = $bkashClient;
     }
 
-    public function index()
+    public static function index()
     {
         return View::make('paymentType');
     }
