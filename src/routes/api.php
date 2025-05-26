@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use TrodevIT\TroPay\Http\Controllers\BkashController;
 
-Route::get('/payment-type', [BkashController::class, 'index'])->name('paymentType');
 
 Route::prefix('tropay')->group(function () {
     Route::get('/pay', [BkashController::class, 'pay'])->name('tropay.pay');
