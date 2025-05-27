@@ -1,0 +1,21 @@
+{
+    "name": "trodevit/tropay",
+    "description": "Testing",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^12.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Trodevit\\Tropay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rubayet",
+            "email": "rubayetislam16@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
