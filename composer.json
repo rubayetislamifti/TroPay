@@ -8,7 +8,14 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Trodevit\\Tropay\\": "src/"
+            "TrodevIT\\TroPay\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TrodevIT\\TroPay\\TroPayServiceProvider"
+            ]
         }
     },
     "authors": [

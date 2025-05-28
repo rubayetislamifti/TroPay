@@ -33,6 +33,3 @@ class TroPayServiceProvider extends ServiceProvider
         ], 'config');
     }
 }
-{
-
-}
