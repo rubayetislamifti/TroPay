@@ -4,6 +4,7 @@ namespace TrodevIT\TroPay;
 
 use Illuminate\Support\ServiceProvider;
 use TrodevIT\TroPay\Helpers\Client;
+use TrodevIT\TroPay\Middleware\AppAuthMiddleware;
 
 class TroPayServiceProvider extends ServiceProvider
 {
@@ -31,5 +32,10 @@ class TroPayServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/tropay.php' => config_path('tropay.php'),
         ], 'config');
+
+        $router = $this->app['router'];
+        $router->aliasMiddleware('tropay.auth', AppAuthMiddleware::class);
+
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
     }
 }
