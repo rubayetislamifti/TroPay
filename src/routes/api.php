@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 use TrodevIT\TroPay\Http\Controllers\TroPayBkashController;
 
 Route::middleware(['tropay'])->group(function () {
