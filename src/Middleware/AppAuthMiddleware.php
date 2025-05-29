@@ -19,8 +19,6 @@ class AppAuthMiddleware
         }
 
 
-        dd('sex');
-
         $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
             $query->where(function ($q) use ($appKey, $appSecret) {
                 $q->where('live_app_key', $appKey)

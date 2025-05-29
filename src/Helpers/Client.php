@@ -29,7 +29,7 @@ class Client
             });
         })->first();
 
-        if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info->live_app_key && $info->live_app_secret) {
+        if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info) {
             $tokenResponse = $this->getToken();
             $this->token = $tokenResponse['token'] ?? null;
         }
