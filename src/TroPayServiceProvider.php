@@ -5,8 +5,7 @@ namespace TrodevIT\TroPay;
 use Illuminate\Support\ServiceProvider;
 use TrodevIT\TroPay\Helpers\Client;
 use TrodevIT\TroPay\Middleware\AppAuthMiddleware;
-use Illuminate\Support\Facades\Route;
-use TrodevIT\TroPay\Http\Controllers\TroPayBkashController;
+
 class TroPayServiceProvider extends ServiceProvider
 {
     /**

@@ -3,7 +3,7 @@
         'name' => 'trodevit/tropay',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'd170c4602437753add3257eae740e80a6dd8d704',
+        'reference' => '02a9914d1cce48ed24f578c0650b1d43b779280f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'illuminate/collections' => array(
             'pretty_version' => '12.x-dev',
             'version' => '12.9999999.9999999.9999999-dev',
-            'reference' => 'd5ea498fd4de52341eced75eced74b7f076bb35f',
+            'reference' => 'e5711846b7c68128bc8de72c13e017606043c996',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/collections',
             'aliases' => array(),
@@ -168,7 +168,7 @@
         'symfony/translation' => array(
             'pretty_version' => '7.4.x-dev',
             'version' => '7.4.9999999.9999999-dev',
-            'reference' => '0760342c70d8352ac27ce75fc62bcaebc3ef5c3e',
+            'reference' => '4aba29076a29a3aa667e09b791e5f868973a8667',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/translation',
             'aliases' => array(),
@@ -194,7 +194,7 @@
         'trodevit/tropay' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd170c4602437753add3257eae740e80a6dd8d704',
+            'reference' => '02a9914d1cce48ed24f578c0650b1d43b779280f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
