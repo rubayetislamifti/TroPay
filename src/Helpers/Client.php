@@ -15,8 +15,9 @@ class Client
     {
         $this->credential = DB::table('payment_infos')->where('provider','bkash')->first();
 
-        if ($this->credential){
-            $this->token = $this->getToken();
+        if ($this->credential && $this->credential->app_key && $this->credential->app_secret) {
+            $tokenResponse = $this->getToken();
+            $this->token = $tokenResponse['token'] ?? null;
         }
     }
 

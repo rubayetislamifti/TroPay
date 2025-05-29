@@ -18,11 +18,15 @@ class AppAuthMiddleware
         if (!$appKey || !$appSecret) {
             return response()->json(['message' => 'App credentials missing'], 401);
         }
-        $info = DB::table('payment_infos')::where(function ($query) use ($appKey, $appSecret) {
-            $query->where('live_app_key', $appKey)
-                ->where('live_app_secret', $appSecret)
-                ->orWhere('sandbox_app_key', $appKey)
-                ->where('sandbox_app_secret', $appSecret);
+
+        $info = DB::table('payment_infos')->where(function ($query) use ($appKey, $appSecret) {
+            $query->where(function ($q) use ($appKey, $appSecret) {
+                $q->where('live_app_key', $appKey)
+                    ->where('live_app_secret', $appSecret);
+            })->orWhere(function ($q) use ($appKey, $appSecret) {
+                $q->where('sandbox_app_key', $appKey)
+                    ->where('sandbox_app_secret', $appSecret);
+            });
         })->first();
 
         if (!$info) {
@@ -31,5 +35,6 @@ class AppAuthMiddleware
 
         return $next($request);
     }
+
 
 }
