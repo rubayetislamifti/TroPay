@@ -3,7 +3,7 @@
         'name' => 'trodevit/tropay',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '64ac6288bb831155ddee90a9dc87d1ba0a32c088',
+        'reference' => '7be4c6327f4cd2add81c9c27d075a4b1ba842cce',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -194,7 +194,7 @@
         'trodevit/tropay' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '64ac6288bb831155ddee90a9dc87d1ba0a32c088',
+            'reference' => '7be4c6327f4cd2add81c9c27d075a4b1ba842cce',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
