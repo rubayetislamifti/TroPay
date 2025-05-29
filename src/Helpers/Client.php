@@ -12,34 +12,34 @@ class Client
     protected $token;
     protected $credential;
 
-    public function __construct()
-    {
-        dd(Request::header('App-Key'), Request::header('App-Secret'));
-
-
-        $appKey = Request::header('App-Key');
-        $appSecret = Request::header('App-Secret');
-
-        $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
-            $query->where(function ($q) use ($appKey, $appSecret) {
-                $q->where('live_app_key', $appKey)
-                    ->where('live_app_secret', $appSecret);
-            })->orWhere(function ($q) use ($appKey, $appSecret) {
-                $q->where('sandbox_app_key', $appKey)
-                    ->where('sandbox_app_secret', $appSecret);
-            });
-        })->first();
-
-        $this->credential = DB::table('payment_infos')
-            ->where('provider','bkash')
-            ->where('api_client_id', $info->user_id)
-            ->first();
-
-        if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info) {
-            $tokenResponse = $this->getToken();
-            $this->token = $tokenResponse['token'] ?? null;
-        }
-    }
+//    public function __construct()
+//    {
+//        dd(Request::header('App-Key'), Request::header('App-Secret'));
+//
+//
+//        $appKey = Request::header('App-Key');
+//        $appSecret = Request::header('App-Secret');
+//
+//        $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
+//            $query->where(function ($q) use ($appKey, $appSecret) {
+//                $q->where('live_app_key', $appKey)
+//                    ->where('live_app_secret', $appSecret);
+//            })->orWhere(function ($q) use ($appKey, $appSecret) {
+//                $q->where('sandbox_app_key', $appKey)
+//                    ->where('sandbox_app_secret', $appSecret);
+//            });
+//        })->first();
+//
+//        $this->credential = DB::table('payment_infos')
+//            ->where('provider','bkash')
+//            ->where('api_client_id', $info->user_id)
+//            ->first();
+//
+//        if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info) {
+//            $tokenResponse = $this->getToken();
+//            $this->token = $tokenResponse['token'] ?? null;
+//        }
+//    }
 
     public function getToken(){
         $url = Config::get('tropay.base_url') . '/tokenized/checkout/token/grant';
