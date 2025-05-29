@@ -35,7 +35,7 @@ class Client
             ->where('api_client_id', $info->user_id)
             ->first();
 
-        if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info) {
+        if ($this->credential) {
             $tokenResponse = $this->getToken();
             $this->token = $tokenResponse['token'] ?? null;
         }
