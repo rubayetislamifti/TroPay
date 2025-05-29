@@ -5,7 +5,8 @@ namespace TrodevIT\TroPay;
 use Illuminate\Support\ServiceProvider;
 use TrodevIT\TroPay\Helpers\Client;
 use TrodevIT\TroPay\Middleware\AppAuthMiddleware;
-
+use Illuminate\Support\Facades\Route;
+use TrodevIT\TroPay\Http\Controllers\TroPayBkashController;
 class TroPayServiceProvider extends ServiceProvider
 {
     /**
@@ -36,6 +37,11 @@ class TroPayServiceProvider extends ServiceProvider
         $router = $this->app['router'];
         $router->aliasMiddleware('tropay', AppAuthMiddleware::class);
 
-        $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
+        Route::middleware(['api', 'tropay'])->group(function () {
+            Route::post('/tropay/bkash/payment', [TroPayBkashController::class, 'initiate'])->name('tropay.payment');
+            Route::get('/tropay/bkash/callback', [TroPayBkashController::class, 'callback'])->name('tropay.callback');
+            Route::get('/tropay/bkash/query', [TroPayBkashController::class, 'query'])->name('tropay.query');
+        });
+
     }
 }
