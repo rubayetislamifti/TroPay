@@ -5,17 +5,31 @@ namespace TrodevIT\TroPay\Helpers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Request;
 
 class Client
 {
     protected $token;
     protected $credential;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->credential = DB::table('payment_infos')->where('provider','bkash')->first();
 
-        if ($this->credential && $this->credential->app_key && $this->credential->app_secret) {
+        $appKey = $request->header('App-Key');
+        $appSecret = $request->header('App-Secret');
+
+        $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
+            $query->where(function ($q) use ($appKey, $appSecret) {
+                $q->where('live_app_key', $appKey)
+                    ->where('live_app_secret', $appSecret);
+            })->orWhere(function ($q) use ($appKey, $appSecret) {
+                $q->where('sandbox_app_key', $appKey)
+                    ->where('sandbox_app_secret', $appSecret);
+            });
+        })->first();
+
+        if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info->live_app_key && $info->live_app_secret) {
             $tokenResponse = $this->getToken();
             $this->token = $tokenResponse['token'] ?? null;
         }
