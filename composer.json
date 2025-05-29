@@ -24,5 +24,15 @@
             "email": "rubayetislam16@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan vendor:publish --provider=\"TrodevIT\\TroPay\\TroPayServiceProvider\" --tag=config --force"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --provider=\"TrodevIT\\TroPay\\TroPayServiceProvider\" --tag=config --force"
+        ]
+    }
+
 }

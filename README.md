@@ -18,6 +18,10 @@ $bkash = new Client();
 $payment = $bkash->createPayment($amount);
 ```
 
+```
+php artisan vendor:publish --provider="TrodevIT\TroPay\TroPayServiceProvider" --tag=config
+```
+
 4. In your callback controller
 
 ```php

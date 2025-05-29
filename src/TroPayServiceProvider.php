@@ -36,6 +36,6 @@ class TroPayServiceProvider extends ServiceProvider
         $router = $this->app['router'];
         $router->aliasMiddleware('tropay', AppAuthMiddleware::class);
 
-        $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
     }
 }
