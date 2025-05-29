@@ -18,6 +18,10 @@ class AppAuthMiddleware
             return response()->json(['message' => 'App credentials missing'], 401);
         }
 
+        $data = DB::table('api_clients')->get();
+
+        dd($data);
+
         $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
             $query->where(function ($q) use ($appKey, $appSecret) {
                 $q->where('live_app_key', $appKey)
@@ -27,7 +31,7 @@ class AppAuthMiddleware
                     ->where('sandbox_app_secret', $appSecret);
             });
         })->first();
-        dd($info);
+
         if (!$info) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
