@@ -15,7 +15,7 @@ class Client
     public function __construct()
     {
         dd(Request::header('App-Key'), Request::header('App-Secret'));
-        $this->credential = DB::table('payment_infos')->where('provider','bkash')->first();
+
 
         $appKey = Request::header('App-Key');
         $appSecret = Request::header('App-Secret');
@@ -29,6 +29,11 @@ class Client
                     ->where('sandbox_app_secret', $appSecret);
             });
         })->first();
+
+        $this->credential = DB::table('payment_infos')
+            ->where('provider','bkash')
+            ->where('api_client_id', $info->user_id)
+            ->first();
 
         if ($this->credential && $this->credential->app_key && $this->credential->app_secret && $info) {
             $tokenResponse = $this->getToken();
