@@ -18,7 +18,7 @@ class TroPayServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/config/tropay.php', 'tropay');
 
-        $this->app->singleton('tropay', function () {
+        $this->app->bind('tropay', function () {
             return new Client();
         });
 
