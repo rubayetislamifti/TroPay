@@ -27,7 +27,7 @@ class AppAuthMiddleware
                     ->where('sandbox_app_secret', $appSecret);
             });
         })->first();
-
+        dd($info);
         if (!$info) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
