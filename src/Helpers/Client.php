@@ -12,12 +12,13 @@ class Client
     protected $token;
     protected $credential;
 
-    public function __construct(Request $request)
+    public function __construct()
     {
+        dd(Request::header('App-Key'), Request::header('App-Secret'));
         $this->credential = DB::table('payment_infos')->where('provider','bkash')->first();
 
-        $appKey = $request->header('App-Key');
-        $appSecret = $request->header('App-Secret');
+        $appKey = Request::header('App-Key');
+        $appSecret = Request::header('App-Secret');
 
         $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
             $query->where(function ($q) use ($appKey, $appSecret) {

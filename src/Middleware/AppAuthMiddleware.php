@@ -14,6 +14,7 @@ class AppAuthMiddleware
         $appKey = $request->header('App-Key');
         $appSecret = $request->header('App-Secret');
 
+        dd(Request::header('App-Key'), Request::header('App-Secret'));
         if (!$appKey || !$appSecret) {
             return response()->json(['message' => 'App credentials missing'], 401);
         }
