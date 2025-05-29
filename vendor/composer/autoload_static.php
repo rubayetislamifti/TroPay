@@ -25,7 +25,7 @@ class ComposerStaticInita3824c73db7d9c5e7aa58dea716b217a
         ),
         'T' => 
         array (
-            'Trodevit\\Tropay\\' => 16,
+            'TrodevIT\\TroPay\\' => 16,
         ),
         'S' => 
         array (
@@ -62,7 +62,7 @@ class ComposerStaticInita3824c73db7d9c5e7aa58dea716b217a
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
         ),
-        'Trodevit\\Tropay\\' => 
+        'TrodevIT\\TroPay\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
