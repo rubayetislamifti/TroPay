@@ -2,53 +2,28 @@
 
 namespace TrodevIT\TroPay\Helpers;
 
+use App\Models\PaymentInfo;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Request;
-
+use Illuminate\Http\Request;
 class Client
 {
     protected $token;
     protected $credential;
 
-    protected $tropay;
+    protected $appKey;
+    protected $appSecret;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        $appKey = Request::header('App-Key');
-        $appSecret = Request::header('App-Secret');
+        $this->appKey = $request->header('X-App-Key');
+        $this->appSecret = $request->header('X-App-Secret');
 
-        dd($appKey, $appSecret);
-        $this->tropay = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
-            $query->where(function ($q) use ($appKey, $appSecret) {
-                $q->where('live_app_key', $appKey)
-                    ->where('live_app_secret', $appSecret);
-            })->orWhere(function ($q) use ($appKey, $appSecret) {
-                $q->where('sandbox_app_key', $appKey)
-                    ->where('sandbox_app_secret', $appSecret);
-            });
-        })->first();
-
-        if (!$this->tropay) {
-            throw new \Exception('Invalid App-Key or App-Secret');
-        }
-
-        $this->credential = DB::table('payment_infos')
-            ->where('provider', 'bkash')
-            ->where('api_client_id', $this->tropay->user_id)
+        $this->credential = PaymentInfo::where('provider', 'bkash')
+            ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
+            ->select('payment_infos.*', 'api_clients.*')
             ->first();
-
-        if ($this->credential) {
-            $tokenResponse = $this->getToken();
-            $this->token = $tokenResponse['id_token'] ?? null;
-
-            if (!$this->token) {
-                dd('Token generation failed', ['response' => $tokenResponse]);
-            }
-        } else {
-            throw new \Exception('No bKash credentials found for this client');
-        }
     }
 
     public function getToken()
@@ -66,12 +41,14 @@ class Client
             'app_secret' => $this->credential->app_secret,
         ];
 
-        $response = Http::withHeaders($headers)
-            ->withBody(json_encode($body), 'application/json')
-            ->post($url);
+        if($this->appKey === $this->credential->live_app_key && $this->appSecret === $this->credential->live_app_secret) {
+            $response = Http::withHeaders($headers)
+                ->withBody(json_encode($body), 'application/json')
+                ->post($url);
 
-        if ($response->successful()) {
-            return $response->json();
+            if ($response->successful()) {
+                dd($response->json());
+            }
         }
 
         return [
