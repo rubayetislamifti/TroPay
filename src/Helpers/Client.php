@@ -12,15 +12,15 @@ class Client
     protected $token;
     protected $credential;
 
+    protected $tropay;
+
     public function __construct()
     {
-//        dd(Request::header('App-Key'), Request::header('App-Secret'));
-
 
         $appKey = Request::header('App-Key');
         $appSecret = Request::header('App-Secret');
 
-        $info = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
+        $this->tropay = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
             $query->where(function ($q) use ($appKey, $appSecret) {
                 $q->where('live_app_key', $appKey)
                     ->where('live_app_secret', $appSecret);
@@ -32,7 +32,7 @@ class Client
 
         $this->credential = DB::table('payment_infos')
             ->where('provider','bkash')
-            ->where('api_client_id', $info->user_id)
+            ->where('api_client_id', $this->tropay->user_id)
             ->first();
 
         if ($this->credential) {
@@ -47,6 +47,8 @@ class Client
         $headers = [
             'username'=> $this->credential->username,
             'password' => $this->credential->password,
+            'App-Key' => $this->tropay->live_app_key,
+            'App-Secret' => $this->tropay->live_app_secret,
             'Accept' => 'application/json',
         ];
 
