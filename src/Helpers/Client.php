@@ -25,7 +25,7 @@ class Client
             ->select('payment_infos.*', 'api_clients.*')
             ->first();
 
-        dd($this->credential);
+//        dd($this->credential);
     }
 
     public function getToken()
