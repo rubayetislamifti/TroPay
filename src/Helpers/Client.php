@@ -14,7 +14,7 @@ class Client
 
     public function __construct()
     {
-        dd(Request::header('App-Key'), Request::header('App-Secret'));
+//        dd(Request::header('App-Key'), Request::header('App-Secret'));
 
 
         $appKey = Request::header('App-Key');
