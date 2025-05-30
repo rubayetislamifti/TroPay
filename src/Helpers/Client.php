@@ -20,7 +20,7 @@ class Client
         $this->appKey = $request->header('X-App-Key');
         $this->appSecret = $request->header('X-App-Secret');
 
-        $this->credential = PaymentInfo::where('provider', 'bkash')
+        $this->credential = DB::table('payment_infos')->where('provider', 'bkash')
             ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
             ->select('payment_infos.*', 'api_clients.*')
             ->first();
