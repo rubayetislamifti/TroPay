@@ -19,6 +19,7 @@ class Client
         $appKey = Request::header('App-Key');
         $appSecret = Request::header('App-Secret');
 
+        dd($appKey, $appSecret);
         $this->tropay = DB::table('api_clients')->where(function ($query) use ($appKey, $appSecret) {
             $query->where(function ($q) use ($appKey, $appSecret) {
                 $q->where('live_app_key', $appKey)
