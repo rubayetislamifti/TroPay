@@ -19,7 +19,7 @@ class Client
     public function __construct(Request $request)
     {
 //        $request = request();
-        dd($request->header('X-App-Key'));
+//        dd($request->header('X-App-Key'));
         $this->appKey = request()->header('X-App-Key') ?? request()->header('x-app-key');
         $this->appSecret = request()->header('X-App-Secret') ?? request()->header('x-app-secret');
         if (!$this->appKey || !$this->appSecret) {
