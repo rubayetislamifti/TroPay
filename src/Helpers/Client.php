@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 class Client
 {
     protected $token;
@@ -16,9 +16,9 @@ class Client
     protected $appKey;
     protected $appSecret;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        dd($this->appKey, $this->appSecret);
+        dd($request->header('X-App-Key'));
         $this->appKey = request()->header('X-App-Key') ?? request()->header('x-app-key');
         $this->appSecret = request()->header('X-App-Secret') ?? request()->header('x-app-secret');
         if (!$this->appKey || !$this->appSecret) {
