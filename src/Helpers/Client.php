@@ -16,7 +16,6 @@ class Client
 
     public function __construct()
     {
-
         $appKey = Request::header('App-Key');
         $appSecret = Request::header('App-Secret');
 
@@ -30,49 +29,57 @@ class Client
             });
         })->first();
 
+        if (!$this->tropay) {
+            throw new \Exception('Invalid App-Key or App-Secret');
+        }
+
         $this->credential = DB::table('payment_infos')
-            ->where('provider','bkash')
+            ->where('provider', 'bkash')
             ->where('api_client_id', $this->tropay->user_id)
             ->first();
 
         if ($this->credential) {
             $tokenResponse = $this->getToken();
-            $this->token = $tokenResponse['token'] ?? null;
+            $this->token = $tokenResponse['id_token'] ?? null;
+
+            if (!$this->token) {
+                dd('Token generation failed', ['response' => $tokenResponse]);
+            }
+        } else {
+            throw new \Exception('No bKash credentials found for this client');
         }
     }
 
-    public function getToken(){
+    public function getToken()
+    {
         $url = Config::get('tropay.base_url') . '/tokenized/checkout/token/grant';
 
         $headers = [
-            'username'=> $this->credential->username,
+            'username' => $this->credential->username,
             'password' => $this->credential->password,
-            'App-Key' => $this->tropay->live_app_key,
-            'App-Secret' => $this->tropay->live_app_secret,
             'Accept' => 'application/json',
         ];
 
         $body = [
-            'app_key'=> $this->credential->app_key,
+            'app_key' => $this->credential->app_key,
             'app_secret' => $this->credential->app_secret,
         ];
 
-        $response = Http::withHeaders($headers)->withBody(json_encode($body), 'application/json')->post($url);
+        $response = Http::withHeaders($headers)
+            ->withBody(json_encode($body), 'application/json')
+            ->post($url);
 
         if ($response->successful()) {
-            $this->token = $response->json('id_token');
-
-            return true;
+            return $response->json();
         }
-
 
         return [
             'error' => true,
             'status' => $response->status(),
             'body' => $response->body(),
         ];
-
     }
+
 
     public function createPayment($amount)
     {
