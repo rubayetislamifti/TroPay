@@ -6,7 +6,7 @@ use App\Models\PaymentInfo;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 class Client
 {
     protected $token;
@@ -15,10 +15,10 @@ class Client
     protected $appKey;
     protected $appSecret;
 
-    public function __construct(Request $request)
+    public function __construct()
     {
-        $this->appKey = $request->header('X-App-Key') ?? $request->header('x-app-key');
-        $this->appSecret = $request->header('X-App-Secret') ?? $request->header('x-app-secret');
+        $this->appKey = request()->header('X-App-Key') ?? request()->header('x-app-key');
+        $this->appSecret = request()->header('X-App-Secret') ?? request()->header('x-app-secret');
         if (!$this->appKey || !$this->appSecret) {
             throw new \Exception('App Key and App Secret are required');
         }
