@@ -18,14 +18,14 @@ class Client
 
     public function __construct()
     {
-        Log::info('Request Headers:', request()->headers->all());
+        dd($this->appKey, $this->appSecret);
         $this->appKey = request()->header('X-App-Key') ?? request()->header('x-app-key');
         $this->appSecret = request()->header('X-App-Secret') ?? request()->header('x-app-secret');
         if (!$this->appKey || !$this->appSecret) {
             throw new \Exception('App Key and App Secret are required');
         }
 
-        dd($this->appKey, $this->appSecret);
+
         $this->credential = DB::table('payment_infos')->where('provider', 'bkash')
             ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
             ->select('payment_infos.*', 'api_clients.*')
