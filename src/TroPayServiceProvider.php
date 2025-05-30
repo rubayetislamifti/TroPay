@@ -34,9 +34,6 @@ class TroPayServiceProvider extends ServiceProvider
             __DIR__.'/config/tropay.php' => config_path('tropay.php'),
         ], 'config');
 
-        $router = $this->app['router'];
-        $router->aliasMiddleware('tropay', AppAuthMiddleware::class);
-
         $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
     }
 }
