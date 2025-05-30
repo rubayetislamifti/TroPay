@@ -5,6 +5,7 @@ namespace TrodevIT\TroPay\Helpers;
 use App\Models\PaymentInfo;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 class Client
@@ -17,6 +18,7 @@ class Client
 
     public function __construct()
     {
+        Log::info('Request Headers:', request()->headers->all());
         $this->appKey = request()->header('X-App-Key') ?? request()->header('x-app-key');
         $this->appSecret = request()->header('X-App-Secret') ?? request()->header('x-app-secret');
         if (!$this->appKey || !$this->appSecret) {
