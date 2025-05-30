@@ -17,15 +17,18 @@ class Client
 
     public function __construct(Request $request)
     {
-        $this->appKey = $request->header('X-App-Key');
-        $this->appSecret = $request->header('X-App-Secret');
+        $this->appKey = $request->header('X-App-Key') ?? $request->header('x-app-key');
+        $this->appSecret = $request->header('X-App-Secret') ?? $request->header('x-app-secret');
+        if (!$this->appKey || !$this->appSecret) {
+            throw new \Exception('App Key and App Secret are required');
+        }
 
+        dd($this->appKey, $this->appSecret);
         $this->credential = DB::table('payment_infos')->where('provider', 'bkash')
             ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
             ->select('payment_infos.*', 'api_clients.*')
             ->first();
 
-//        dd($this->credential);
     }
 
     public function getToken()
@@ -49,7 +52,7 @@ class Client
                 ->post($url);
 
             if ($response->successful()) {
-                dd($response->json());
+                dd($response->json('id_token'));
             }
         }
 
