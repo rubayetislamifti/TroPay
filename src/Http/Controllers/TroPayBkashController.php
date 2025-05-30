@@ -8,25 +8,25 @@ use TrodevIT\TroPay\Helpers\Client;
 
 class TroPayBkashController extends Controller
 {
-    public function getToken(Client $bkashclient)
+    public function initiate(Client $bkashclient)
     {
         $tokenData = $bkashclient->getToken();
 
         return response()->json($tokenData);
     }
-    public function initiate(Request $request)
-    {
-        $amount = $request->input('amount', 1); // Default amount 1
-        $bkash = new Client($request);
-
-        $paymentResult = $bkash->createPayment($amount);
-
-        if ($paymentResult['status'] && isset($paymentResult['data']['bkashURL'])) {
-            return redirect()->away($paymentResult['data']['bkashURL']);
-        }
-
-        return response()->json($paymentResult, 500);
-    }
+//    public function initiate(Request $request)
+//    {
+//        $amount = $request->input('amount', 1); // Default amount 1
+//        $bkash = new Client($request);
+//
+//        $paymentResult = $bkash->createPayment($amount);
+//
+//        if ($paymentResult['status'] && isset($paymentResult['data']['bkashURL'])) {
+//            return redirect()->away($paymentResult['data']['bkashURL']);
+//        }
+//
+//        return response()->json($paymentResult, 500);
+//    }
 
     public function callback(Request $request)
     {
