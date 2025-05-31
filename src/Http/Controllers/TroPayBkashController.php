@@ -24,7 +24,7 @@ class TroPayBkashController extends Controller
 //    }
     public function initiate(Request $request)
     {
-        $amount = $request->input('amount', 1); // Default amount 1
+        $amount = 1; // Default amount 1
         $bkash = new Client($request);
 
         $paymentResult = $bkash->createPayment($amount);

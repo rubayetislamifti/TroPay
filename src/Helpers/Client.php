@@ -117,9 +117,17 @@ class Client
                     ->post($url);
 
                 if ($response->successful()) {
+                    $responseData = $response->json();
+                    if (isset($responseData['bkashURL'])) {
+                        return [
+                            'status' => true,
+                            'data' => $responseData
+                        ];
+                    }
                     return [
-                        'status' => true,
-                        'data' => $response->json(),
+                        'status' => false,
+                        'message' => 'Missing checkout URL in response',
+                        'response' => $responseData
                     ];
                 }
             }
