@@ -33,7 +33,7 @@ class Client
             ->select('payment_infos.*', 'api_clients.*')
             ->first();
 
-        dd($this->credential);
+//        dd($this->credential);
 //
     }
 
@@ -51,6 +51,8 @@ class Client
             'app_key' => $this->credential->app_key,
             'app_secret' => $this->credential->app_secret,
         ];
+
+        dd($body);
 
         if($this->appKey === $this->credential->live_app_key && $this->appSecret === $this->credential->live_app_secret) {
             $response = Http::withHeaders($headers)
