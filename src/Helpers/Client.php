@@ -55,14 +55,14 @@ class Client
                 ->withBody(json_encode($body), 'application/json')
                 ->post($url);
 
-            dd($response->status(), $response->json());
+//            dd($response->status(), $response->json());
 
             if ($response->successful()) {
                 $this->token = $response->json('id_token');
 
                 // Optionally, you can log the token or return it
-                dd($this->token);
-                return $response->json('id_token');
+//                dd($this->token);
+                return true;
             }
         }
 
