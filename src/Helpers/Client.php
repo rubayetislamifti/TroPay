@@ -32,6 +32,8 @@ class Client
             ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
             ->select('payment_infos.*', 'api_clients.*')
             ->first();
+
+        dd($this->credential);
 //
     }
 
