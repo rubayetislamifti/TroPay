@@ -52,26 +52,30 @@ class Client
             'app_secret' => $this->credential->app_secret,
         ];
 
-//        dd($body);
-
         if($this->appKey === $this->credential->live_app_key && $this->appSecret === $this->credential->live_app_secret) {
             $response = Http::withHeaders($headers)
                 ->withBody(json_encode($body), 'application/json')
                 ->post($url);
 
-//            dd($response->status(), $response->json());
-
             if ($response->successful()) {
-
                 $this->token = $response->json('id_token');
-                return true;
+                return [
+                    'status' => true,
+                    'id_token' => $this->token,
+                ];
             }
+
+            return [
+                'error' => true,
+                'status' => $response->status(),
+                'message' => 'Failed to generate token',
+                'body' => $response->json(),
+            ];
         }
 
         return [
             'error' => true,
-            'status' => $response->status(),
-            'body' => $response->body(),
+            'message' => 'App credentials do not match'
         ];
     }
 
