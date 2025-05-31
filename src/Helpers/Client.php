@@ -16,23 +16,23 @@ class Client
     protected $appKey;
     protected $appSecret;
 
-    public function __construct(Request $request)
-    {
-//        $request = request();
+//    public function __construct(Request $request)
+//    {
+////        $request = request();
 //        dd($request->header('X-App-Key'));
-        $this->appKey = request()->header('X-App-Key');
-        $this->appSecret = request()->header('X-App-Secret');
-        if (!$this->appKey || !$this->appSecret) {
-            throw new \Exception('App Key and App Secret are required');
-        }
-
-
-        $this->credential = DB::table('payment_infos')->where('provider', 'bkash')
-            ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
-            ->select('payment_infos.*', 'api_clients.*')
-            ->first();
-
-    }
+//        $this->appKey = request()->header('X-App-Key');
+//        $this->appSecret = request()->header('X-App-Secret');
+//        if (!$this->appKey || !$this->appSecret) {
+//            throw new \Exception('App Key and App Secret are required');
+//        }
+//
+//
+//        $this->credential = DB::table('payment_infos')->where('provider', 'bkash')
+//            ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
+//            ->select('payment_infos.*', 'api_clients.*')
+//            ->first();
+//
+//    }
 
     public function getToken()
     {
