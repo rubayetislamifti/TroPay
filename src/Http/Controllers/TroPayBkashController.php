@@ -11,28 +11,28 @@ class TroPayBkashController extends Controller
     protected $appKey;
     protected $appSecret;
     protected $credential;
-//    public function initiate(Client $bkashclient)
-//    {
-//
-//        $tokenData = $bkashclient->getToken();
-//
-////        dd($tokenData);
-//        return response()->json($tokenData);
-//    }
-    public function initiate(Request $request)
+    public function initiate(Client $bkashclient)
     {
-        $amount = $request->input('amount', 1); // Default amount 1
-        $bkash = new Client($request);
 
-        $paymentResult = $bkash->createPayment($amount);
+        $tokenData = $bkashclient->getToken();
 
-        if ($paymentResult['status'] && isset($paymentResult['data']['bkashURL'])) {
-            dd($paymentResult['data']['bkashURL']);
-            return redirect()->away($paymentResult['data']['bkashURL']);
-        }
-
-        return response()->json($paymentResult, 500);
+        dd($tokenData);
+        return response()->json($tokenData);
     }
+//    public function initiate(Request $request)
+//    {
+//        $amount = $request->input('amount', 1); // Default amount 1
+//        $bkash = new Client($request);
+//
+//        $paymentResult = $bkash->createPayment($amount);
+//
+//        if ($paymentResult['status'] && isset($paymentResult['data']['bkashURL'])) {
+//            dd($paymentResult['data']['bkashURL']);
+//            return redirect()->away($paymentResult['data']['bkashURL']);
+//        }
+//
+//        return response()->json($paymentResult, 500);
+//    }
 
     public function callback(Request $request)
     {
