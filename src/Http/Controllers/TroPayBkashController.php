@@ -13,17 +13,6 @@ class TroPayBkashController extends Controller
     protected $credential;
     public function initiate(Client $bkashclient)
     {
-        $this->appKey = request()->header('X-App-Key');
-        $this->appSecret = request()->header('X-App-Secret');
-        if (!$this->appKey || !$this->appSecret) {
-            throw new \Exception('App Key and App Secret are required');
-        }
-
-
-        $this->credential = DB::table('payment_infos')->where('provider', 'bkash')
-            ->join('api_clients', 'payment_infos.api_client_id', '=', 'api_clients.user_id')
-            ->select('payment_infos.*', 'api_clients.*')
-            ->first();
 
         $tokenData = $bkashclient->getToken();
 
