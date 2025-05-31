@@ -20,8 +20,8 @@ class Client
     {
 ////        $request = request();
 //        dd($request->header('X-App-Key'));
-        $this->appKey = request()->header('X-App-Key');
-        $this->appSecret = request()->header('X-App-Secret');
+        $this->appKey = $request->header('X-App-Key');
+        $this->appSecret = $request->header('X-App-Secret');
 
         if (!$this->appKey || !$this->appSecret) {
             throw new \Exception('App Key and App Secret are required');
