@@ -30,7 +30,7 @@ class TroPayBkashController extends Controller
         $paymentResult = $bkash->createPayment($amount);
 
         if ($paymentResult['status'] && isset($paymentResult['data']['bkashURL'])) {
-            dd($paymentResult['data']['bkashURL']);
+            dd($paymentResult);
             return redirect()->away($paymentResult['data']['bkashURL']);
         }
 
