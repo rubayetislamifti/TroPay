@@ -22,6 +22,7 @@ class Client
 //        dd($request->header('X-App-Key'));
         $this->appKey = request()->header('X-App-Key');
         $this->appSecret = request()->header('X-App-Secret');
+
         if (!$this->appKey || !$this->appSecret) {
             throw new \Exception('App Key and App Secret are required');
         }
@@ -55,7 +56,10 @@ class Client
                 ->post($url);
 
             if ($response->successful()) {
-//                dd($response->json('id_token'));
+                $this->token = $response->json('id_token');
+
+                // Optionally, you can log the token or return it
+                dd($this->token);
                 return $response->json('id_token');
             }
         }
