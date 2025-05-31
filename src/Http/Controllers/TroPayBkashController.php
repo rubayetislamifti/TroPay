@@ -5,7 +5,7 @@ namespace TrodevIT\TroPay\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use TrodevIT\TroPay\Helpers\Client;
-
+use Illuminate\Support\Facades\DB;
 class TroPayBkashController extends Controller
 {
     protected $appKey;
@@ -27,6 +27,7 @@ class TroPayBkashController extends Controller
 
         $tokenData = $bkashclient->getToken();
 
+        dd($tokenData);
         return response()->json($tokenData);
     }
 //    public function initiate(Request $request)
