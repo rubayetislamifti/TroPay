@@ -98,17 +98,18 @@ class Client
 //        dd($body);
 
         try {
-            $response = Http::withHeaders($headers)
-                ->withBody(json_encode($body), 'application/json')
-                ->post($url);
+            if($this->appKey === $this->credential->live_app_key && $this->appSecret === $this->credential->live_app_secret) {
+                $response = Http::withHeaders($headers)
+                    ->withBody(json_encode($body), 'application/json')
+                    ->post($url);
 
-            if ($response->successful()) {
-                return [
-                    'status' => true,
-                    'data' => $response->json(),
-                ];
+                if ($response->successful()) {
+                    return [
+                        'status' => true,
+                        'data' => $response->json(),
+                    ];
+                }
             }
-
             return [
                 'status' => false,
                 'message' => 'bKash API error',
