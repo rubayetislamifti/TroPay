@@ -83,11 +83,12 @@ class Client
     public function createPayment($amount)
     {
         if (!$this->token) {
-            return [
-                'status' => false,
-                'message' => 'Token not found'
-            ];
+        $tokenResult = $this->getToken();
+        if (isset($tokenResult['error']) && $tokenResult['error']) {
+            return $tokenResult;
         }
+        $this->token = $tokenResult['id_token'];
+    }
 
         $url = config('bkash.base_url') . '/tokenized/checkout/create';
 
