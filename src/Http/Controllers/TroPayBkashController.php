@@ -16,7 +16,7 @@ class TroPayBkashController extends Controller
 
         $tokenData = $bkashclient->getToken();
 
-        dd($tokenData);
+//        dd($tokenData);
         return response()->json($tokenData);
     }
 //    public function initiate(Request $request)

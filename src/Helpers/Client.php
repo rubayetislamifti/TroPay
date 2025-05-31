@@ -55,7 +55,7 @@ class Client
                 ->post($url);
 
             if ($response->successful()) {
-                dd("nthg");
+                dd($response->json('id_token'));
                 return $response->json('id_token');
             }
         }
