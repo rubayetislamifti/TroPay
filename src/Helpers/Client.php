@@ -52,7 +52,7 @@ class Client
             'app_secret' => $this->credential->app_secret,
         ];
 
-        dd($body);
+//        dd($body);
 
         if($this->appKey === $this->credential->live_app_key && $this->appSecret === $this->credential->live_app_secret) {
             $response = Http::withHeaders($headers)
@@ -62,10 +62,8 @@ class Client
 //            dd($response->status(), $response->json());
 
             if ($response->successful()) {
-                $this->token = $response->json('id_token');
 
-                // Optionally, you can log the token or return it
-//                dd($this->token);
+                $this->token = $response->json('id_token');
                 return true;
             }
         }
