@@ -55,6 +55,8 @@ class Client
                 ->withBody(json_encode($body), 'application/json')
                 ->post($url);
 
+            dd($response->status(), $response->json());
+
             if ($response->successful()) {
                 $this->token = $response->json('id_token');
 
