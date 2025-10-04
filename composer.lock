@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "c9b5c97d58361e826d227442c4d2230d",
+=======
+    "content-hash": "5c0dba9ee04b024583dfbba55789cf68",
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -167,6 +171,7 @@
             "time": "2024-02-18T21:47:00+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "fruitcake/php-cors",
             "version": "dev-master",
             "source": {
@@ -654,17 +659,28 @@
             "time": "2025-02-03T10:55:03+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "illuminate/collections",
             "version": "12.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
+<<<<<<< HEAD
                 "reference": "e9380b3ffbf0071f65e487a6cad8770f95f4ca5f"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/collections/zipball/e9380b3ffbf0071f65e487a6cad8770f95f4ca5f",
                 "reference": "e9380b3ffbf0071f65e487a6cad8770f95f4ca5f",
+=======
+                "reference": "e5711846b7c68128bc8de72c13e017606043c996"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/e5711846b7c68128bc8de72c13e017606043c996",
+                "reference": "e5711846b7c68128bc8de72c13e017606043c996",
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
                 "shasum": ""
             },
             "require": {
@@ -708,7 +724,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2025-05-22T14:54:00+00:00"
+=======
+            "time": "2025-05-28T13:08:33+00:00"
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
         },
         {
             "name": "illuminate/conditionable",
@@ -757,6 +777,7 @@
             "time": "2025-05-13T15:08:45+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "illuminate/container",
             "version": "12.x-dev",
             "source": {
@@ -808,6 +829,8 @@
             "time": "2025-05-21T13:18:18+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "illuminate/contracts",
             "version": "12.x-dev",
             "source": {
@@ -856,6 +879,7 @@
             "time": "2025-05-13T15:08:45+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "illuminate/filesystem",
             "version": "12.x-dev",
             "source": {
@@ -984,6 +1008,8 @@
             "time": "2025-05-13T15:08:45+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "illuminate/macroable",
             "version": "12.x-dev",
             "source": {
@@ -1030,6 +1056,7 @@
             "time": "2024-07-23T16:31:01+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "illuminate/pipeline",
             "version": "12.x-dev",
             "source": {
@@ -1199,17 +1226,28 @@
             "time": "2025-05-13T15:08:45+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "illuminate/support",
             "version": "12.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
+<<<<<<< HEAD
                 "reference": "07477e5675202991e0a1fd52ebcdc922403b0a1f"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/illuminate/support/zipball/07477e5675202991e0a1fd52ebcdc922403b0a1f",
                 "reference": "07477e5675202991e0a1fd52ebcdc922403b0a1f",
+=======
+                "reference": "ca7535d97755d36dd0afcb3627e5f0623dae5000"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/ca7535d97755d36dd0afcb3627e5f0623dae5000",
+                "reference": "ca7535d97755d36dd0afcb3627e5f0623dae5000",
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
                 "shasum": ""
             },
             "require": {
@@ -1273,7 +1311,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2025-05-23T14:33:28+00:00"
+=======
+            "time": "2025-05-26T17:21:08+00:00"
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
         },
         {
             "name": "nesbot/carbon",
@@ -1484,6 +1526,7 @@
             "time": "2023-09-22T11:11:30+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "psr/event-dispatcher",
             "version": "dev-master",
             "source": {
@@ -1750,6 +1793,8 @@
             "time": "2024-09-11T13:17:53+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "psr/simple-cache",
             "version": "dev-master",
             "source": {
@@ -1802,6 +1847,7 @@
             "time": "2022-04-08T16:41:45+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -1848,6 +1894,10 @@
         {
             "name": "symfony/clock",
             "version": "7.3.x-dev",
+=======
+            "name": "symfony/clock",
+            "version": "7.4.x-dev",
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/clock.git",
@@ -1901,7 +1951,11 @@
                 "time"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/clock/tree/v7.2.0"
+=======
+                "source": "https://github.com/symfony/clock/tree/v7.3.0-RC1"
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             },
             "funding": [
                 {
@@ -1988,6 +2042,7 @@
             "time": "2024-09-25T14:21:43+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/error-handler",
             "version": "7.3.x-dev",
             "source": {
@@ -2809,6 +2864,8 @@
             "time": "2024-09-09T11:45:10+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "symfony/polyfill-mbstring",
             "version": "1.x-dev",
             "source": {
@@ -2891,6 +2948,7 @@
             "time": "2024-12-23T08:48:59+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/polyfill-php80",
             "version": "1.x-dev",
             "source": {
@@ -2972,6 +3030,8 @@
             "time": "2025-01-02T08:10:11+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "symfony/polyfill-php83",
             "version": "1.x-dev",
             "source": {
@@ -3049,6 +3109,7 @@
             "time": "2024-09-09T11:45:10+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/routing",
             "version": "7.3.x-dev",
             "source": {
@@ -3141,6 +3202,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/0760342c70d8352ac27ce75fc62bcaebc3ef5c3e",
                 "reference": "0760342c70d8352ac27ce75fc62bcaebc3ef5c3e",
+=======
+            "name": "symfony/translation",
+            "version": "7.4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "4aba29076a29a3aa667e09b791e5f868973a8667"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/4aba29076a29a3aa667e09b791e5f868973a8667",
+                "reference": "4aba29076a29a3aa667e09b791e5f868973a8667",
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
                 "shasum": ""
             },
             "require": {
@@ -3223,7 +3297,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2025-04-24T11:26:44+00:00"
+=======
+            "time": "2025-05-29T07:19:49+00:00"
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
         },
         {
             "name": "symfony/translation-contracts",
@@ -3305,6 +3383,7 @@
             "time": "2024-09-27T08:32:26+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/var-dumper",
             "version": "7.3.x-dev",
             "source": {
@@ -3389,6 +3468,8 @@
             "time": "2025-04-27T18:39:23+00:00"
         },
         {
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
             "name": "voku/portable-ascii",
             "version": "2.0.3",
             "source": {

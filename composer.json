@@ -1,5 +1,6 @@
 {
     "name": "trodevit/tropay",
+<<<<<<< HEAD
     "description": "Payment gateway service from Trodev IT. This package is on testing phase",
     "type": "library",
     "require": {
@@ -8,21 +9,33 @@
         "illuminate/routing": "^10.0 || ^11.0 || ^12.0",
         "illuminate/container": "^10.0 || ^11.0 || ^12.0"
     },
+=======
+    "description": "Testing",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^12.0"
+    },
+    "license": "MIT",
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
     "autoload": {
         "psr-4": {
             "TrodevIT\\TroPay\\": "src/"
         }
     },
+<<<<<<< HEAD
     "authors": [
         {
             "name": "Trodev IT",
             "email": "rubayetislam16@gmail.com"
         }
     ],
+=======
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
     "extra": {
         "laravel": {
             "providers": [
                 "TrodevIT\\TroPay\\TroPayServiceProvider"
+<<<<<<< HEAD
             ],
             "aliases": {
                 "TroPay": "TrodevIT\\TroPay\\Facades\\TroPay"
@@ -31,4 +44,17 @@
     },
     "license": "MIT",
     "minimum-stability": "dev"
+=======
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "rubayet",
+            "email": "rubayetislam16@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+
+>>>>>>> 4ac89975b899b3345b38af8d3d9296ce133c53c9
 }
